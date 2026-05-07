@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四月份团队整体数据汇总仪表盘</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 24px;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      padding: 36px 20px 28px;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-radius: 16px;
+      margin-bottom: 28px;
+      border: 1px solid #334155;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #818cf8, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .header .sub { color: #94a3b8; font-size: 0.95rem; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .sum-card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 20px 18px;
+      border: 1px solid #334155;
+      text-align: center;
+    }
+    .sum-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .sum-card .val {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #818cf8, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sum-card .label { color: #94a3b8; font-size: 0.8rem; margin-top: 4px; }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #818cf8;
+      padding: 10px 0 10px;
+      border-bottom: 2px solid #334155;
+      margin-bottom: 16px;
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th { background: #334155; color: #94a3b8; padding: 11px 12px; text-align: left; font-weight: 600; white-space: nowrap; }
+    td { padding: 11px 12px; border-bottom: 1px solid #1e293b; color: #e2e8f0; white-space: nowrap; vertical-align: middle; }
+    tr:nth-child(even) td { background: #1a2234; }
+    tr:hover td { background: #263348; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(99,102,241,0.2);
+      color: #818cf8;
+    }
+    .badge.green { background: rgba(16,185,129,0.2); color: #34d399; }
+    .badge.orange { background: rgba(245,158,11,0.2); color: #fbbf24; }
+
+    .btn-view {
+      display: inline-block;
+      padding: 5px 14px;
+      background: linear-gradient(135deg, #4f46e5, #059669);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn-view:hover { opacity: 0.85; }
+
+    .note { color: #475569; font-size: 0.78rem; margin-top: 20px; text-align: center; }
+
+    .team-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .team-card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 18px 16px;
+      border: 1px solid #334155;
+      text-align: center;
+      text-decoration: none;
+      color: #e2e8f0;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .team-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+      border-color: #818cf8;
+    }
+    .team-card .tc-id { font-size: 1.25rem; font-weight: 800; color: #818cf8; margin-bottom: 6px; }
+    .team-card .tc-amount { font-size: 1.1rem; font-weight: 700; color: #34d399; }
+    .team-card .tc-meta { color: #94a3b8; font-size: 0.78rem; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-size:2.8rem;margin-bottom:10px;">🏆</div>
+  <h1>四月份 · 团队整体数据汇总</h1>
+  <div class="sub">9支团队 | 统计周期：2026年4月 | 点击各团队卡片查看详细仪表盘</div>
+</div>
+
+<div class="section-title">📌 九团合计概览</div>
+<div class="summary-grid">
+  <div class="sum-card">
+    <div class="icon">💰</div>
+    <div class="val">¥601,910</div>
+    <div class="label">九团总订单金额</div>
+  </div>
+  <div class="sum-card">
+    <div class="icon">👆</div>
+    <div class="val">9,093,905</div>
+    <div class="label">九团总点击量</div>
+  </div>
+  <div class="sum-card">
+    <div class="icon">🛒</div>
+    <div class="val">24,131</div>
+    <div class="label">九团总订单数</div>
+  </div>
+  <div class="sum-card">
+    <div class="icon">📈</div>
+    <div class="val">0.265%</div>
+    <div class="label">综合点击转化率</div>
+  </div>
+</div>
+
+<div class="section-title">🚀 快速跳转各团队详细仪表盘</div>
+<div class="team-cards">
+<a href="dashboard_4D62Q.html" target="_blank" class="team-card">
+  <div class="tc-id">4D62Q</div>
+  <div class="tc-amount">¥164,767.61</div>
+  <div class="tc-meta">点击:2,289,222 / 订单:5,735</div>
+  <div class="tc-meta">54个收益人</div>
+</a><a href="dashboard_CXWKF.html" target="_blank" class="team-card">
+  <div class="tc-id">CXWKF</div>
+  <div class="tc-amount">¥119,561.12</div>
+  <div class="tc-meta">点击:1,316,449 / 订单:5,025</div>
+  <div class="tc-meta">7个收益人</div>
+</a><a href="dashboard_AS5QC.html" target="_blank" class="team-card">
+  <div class="tc-id">AS5QC</div>
+  <div class="tc-amount">¥66,348.09</div>
+  <div class="tc-meta">点击:96,494 / 订单:717</div>
+  <div class="tc-meta">6个收益人</div>
+</a><a href="dashboard_UT4CY.html" target="_blank" class="team-card">
+  <div class="tc-id">UT4CY</div>
+  <div class="tc-amount">¥56,856.65</div>
+  <div class="tc-meta">点击:766,860 / 订单:3,028</div>
+  <div class="tc-meta">2个收益人</div>
+</a><a href="dashboard_4YYA8.html" target="_blank" class="team-card">
+  <div class="tc-id">4YYA8</div>
+  <div class="tc-amount">¥50,584.21</div>
+  <div class="tc-meta">点击:186,231 / 订单:873</div>
+  <div class="tc-meta">2个收益人</div>
+</a><a href="dashboard_RPX72.html" target="_blank" class="team-card">
+  <div class="tc-id">RPX72</div>
+  <div class="tc-amount">¥50,573.23</div>
+  <div class="tc-meta">点击:579,435 / 订单:1,253</div>
+  <div class="tc-meta">1个收益人</div>
+</a><a href="dashboard_NSV4A.html" target="_blank" class="team-card">
+  <div class="tc-id">NSV4A</div>
+  <div class="tc-amount">¥40,581.55</div>
+  <div class="tc-meta">点击:2,672,769 / 订单:5,578</div>
+  <div class="tc-meta">29个收益人</div>
+</a><a href="dashboard_QS4PQ.html" target="_blank" class="team-card">
+  <div class="tc-id">QS4PQ</div>
+  <div class="tc-amount">¥34,609.26</div>
+  <div class="tc-meta">点击:779,142 / 订单:1,025</div>
+  <div class="tc-meta">4个收益人</div>
+</a><a href="dashboard_VH4S3.html" target="_blank" class="team-card">
+  <div class="tc-id">VH4S3</div>
+  <div class="tc-amount">¥18,028.39</div>
+  <div class="tc-meta">点击:407,303 / 订单:897</div>
+  <div class="tc-meta">6个收益人</div>
+</a>
+</div>
+
+<div class="section-title">📊 各团队综合排名（按订单金额降序）</div>
+<div style="overflow-x:auto;">
+<table>
+<thead>
+<tr>
+  <th>排名</th><th>团队邀请码</th><th>总订单金额</th><th>总点击量</th><th>总订单数</th>
+  <th>点击转化率</th><th>收益人数</th><th>最强剧场</th><th>团长贡献占比</th><th>TOP收益人</th><th>操作</th>
+</tr>
+</thead>
+<tbody>
+    <tr onclick="window.open('dashboard_4D62Q.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">🥇</td>
+      <td><span class="badge">4D62Q</span></td>
+      <td><b>¥164,767.61</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:180px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>2,289,222</td>
+      <td>5,735</td>
+      <td>0.251%</td>
+      <td>54</td>
+      <td><span class="badge green">DramaBox</span></td>
+      <td>0.0%</td>
+      <td><span class="badge orange">SAXMV</span> 40.2%</td>
+      <td><a href="dashboard_4D62Q.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_CXWKF.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">🥈</td>
+      <td><span class="badge">CXWKF</span></td>
+      <td><b>¥119,561.12</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:130px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>1,316,449</td>
+      <td>5,025</td>
+      <td>0.382%</td>
+      <td>7</td>
+      <td><span class="badge green">ShortMax</span></td>
+      <td>0.3%</td>
+      <td><span class="badge orange">J7EJC</span> 75.5%</td>
+      <td><a href="dashboard_CXWKF.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_AS5QC.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">🥉</td>
+      <td><span class="badge">AS5QC</span></td>
+      <td><b>¥66,348.09</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:72px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>96,494</td>
+      <td>717</td>
+      <td>0.743%</td>
+      <td>6</td>
+      <td><span class="badge green">DramaBox</span></td>
+      <td>0.1%</td>
+      <td><span class="badge orange">5M3ZV</span> 43.4%</td>
+      <td><a href="dashboard_AS5QC.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_UT4CY.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">4️⃣</td>
+      <td><span class="badge">UT4CY</span></td>
+      <td><b>¥56,856.65</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:62px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>766,860</td>
+      <td>3,028</td>
+      <td>0.395%</td>
+      <td>2</td>
+      <td><span class="badge green">ShortMax</span></td>
+      <td>0.0%</td>
+      <td><span class="badge orange">DTNFP</span> 100.0%</td>
+      <td><a href="dashboard_UT4CY.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_4YYA8.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">5️⃣</td>
+      <td><span class="badge">4YYA8</span></td>
+      <td><b>¥50,584.21</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:55px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>186,231</td>
+      <td>873</td>
+      <td>0.469%</td>
+      <td>2</td>
+      <td><span class="badge green">ShortMax</span></td>
+      <td>0.0%</td>
+      <td><span class="badge orange">2JZJW</span> 64.4%</td>
+      <td><a href="dashboard_4YYA8.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_RPX72.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">6️⃣</td>
+      <td><span class="badge">RPX72</span></td>
+      <td><b>¥50,573.23</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:55px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>579,435</td>
+      <td>1,253</td>
+      <td>0.216%</td>
+      <td>1</td>
+      <td><span class="badge green">ShortMax</span></td>
+      <td>0.0%</td>
+      <td><span class="badge orange">6V6FD</span> 100.0%</td>
+      <td><a href="dashboard_RPX72.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_NSV4A.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">7️⃣</td>
+      <td><span class="badge">NSV4A</span></td>
+      <td><b>¥40,581.55</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:44px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>2,672,769</td>
+      <td>5,578</td>
+      <td>0.209%</td>
+      <td>29</td>
+      <td><span class="badge green">ShortMax</span></td>
+      <td>3.8%</td>
+      <td><span class="badge orange">ZP5QN</span> 19.9%</td>
+      <td><a href="dashboard_NSV4A.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_QS4PQ.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">8️⃣</td>
+      <td><span class="badge">QS4PQ</span></td>
+      <td><b>¥34,609.26</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:37px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>779,142</td>
+      <td>1,025</td>
+      <td>0.132%</td>
+      <td>4</td>
+      <td><span class="badge green">ReelShort</span></td>
+      <td>0.1%</td>
+      <td><span class="badge orange">YT5VH</span> 67.0%</td>
+      <td><a href="dashboard_QS4PQ.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    
+    <tr onclick="window.open('dashboard_VH4S3.html','_blank')" style="cursor:pointer;">
+      <td style="text-align:center;font-size:1.3rem;">9️⃣</td>
+      <td><span class="badge">VH4S3</span></td>
+      <td><b>¥18,028.39</b><br><div style="display:flex;align-items:center;gap:6px;margin-top:4px;"><div style="width:19px;height:6px;border-radius:3px;background:linear-gradient(90deg,#818cf8,#34d399)"></div></div></td>
+      <td>407,303</td>
+      <td>897</td>
+      <td>0.220%</td>
+      <td>6</td>
+      <td><span class="badge green">ShortMax</span></td>
+      <td>9.7%</td>
+      <td><span class="badge orange">CA84R</span> 63.4%</td>
+      <td><a href="dashboard_VH4S3.html" target="_blank" class="btn-view">查看详情 →</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<p class="note">数据来源：各团队4月份整体数据分析表 | 生成时间：2026年5月7日 | 点击行跳转对应仪表盘</p>
+
+</body>
+</html>
