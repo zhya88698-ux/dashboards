@@ -9,12 +9,12 @@ body{font-family:'Segoe UI','PingFang SC',sans-serif;background:#0f172a;color:#e
 .header h1{font-size:2rem;font-weight:700;background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .header .sub{color:#94a3b8;margin-top:8px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
-.team-card{background:#1e293b;border-radius:14px;padding:22px 18px;border:1px solid #334155;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:center;position:relative}
+.team-card{background:#1e293b;border-radius:14px;padding:22px 18px;border:1px solid #334155;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:center}
 .team-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.4);border-color:#818cf8}
-.rank{position:absolute;top:12px;left:14px;font-size:.75rem;font-weight:700;color:#475569}
 .team-id{font-size:1.4rem;font-weight:700;color:#818cf8;margin-bottom:10px}
 .team-amount{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .team-label{color:#64748b;font-size:.78rem;margin-top:4px}
+.team-rows{color:#64748b;font-size:.75rem;margin-top:4px}
 .total-bar{background:#1e293b;border-radius:12px;padding:18px 24px;border:1px solid #334155;margin-bottom:28px;display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
 .total-item{text-align:center}
 .total-val{font-size:1.5rem;font-weight:700;color:#34d399}
@@ -24,96 +24,36 @@ body{font-family:'Segoe UI','PingFang SC',sans-serif;background:#0f172a;color:#e
 <div class="header">
   <div style="font-size:2.5rem;margin-bottom:8px">📊</div>
   <h1>团队数据分析总览</h1>
-  <div class="sub">共 12 个团队 | 2026年4月数据 | 点击卡片查看详细仪表盘</div>
+  <div class="sub">共 3 个团队 | 2026年4月数据 | 点击卡片查看详细仪表盘</div>
 </div>
 <div class="total-bar">
-  <div class="total-item"><div class="total-val">¥666,902.57</div><div class="total-lbl">全团队总订单金额</div></div>
-  <div class="total-item"><div class="total-val">12</div><div class="total-lbl">团队数量</div></div>
+  <div class="total-item"><div class="total-val">¥64,992.46</div><div class="total-lbl">3个团队总订单金额</div></div>
+  <div class="total-item"><div class="total-val">2,753</div><div class="total-lbl">总数据条数</div></div>
 </div>
 <div class="grid">
-    <div class="team-card" onclick="window.location='dashboard_4D62Q.html'">
-      <div class="rank">#1</div>
-      <div class="team-id">4D62Q</div>
-      <div class="team-amount">¥164,767.61</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
 
-    <div class="team-card" onclick="window.location='dashboard_CXWKF.html'">
-      <div class="rank">#2</div>
-      <div class="team-id">CXWKF</div>
-      <div class="team-amount">¥119,561.12</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
+  <div class="team-card" onclick="window.location='dashboard_PM3V6.html'">
+    <div class="team-id">PM3V6</div>
+    <div class="team-amount">¥28,028.62</div>
+    <div class="team-label">4月总订单金额</div>
+    <div class="team-rows">362 条数据记录</div>
+  </div>
 
-    <div class="team-card" onclick="window.location='dashboard_AS5QC.html'">
-      <div class="rank">#3</div>
-      <div class="team-id">AS5QC</div>
-      <div class="team-amount">¥66,348.09</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
+  <div class="team-card" onclick="window.location='dashboard_FWV7R.html'">
+    <div class="team-id">FWV7R</div>
+    <div class="team-amount">¥20,628.30</div>
+    <div class="team-label">4月总订单金额</div>
+    <div class="team-rows">1,604 条数据记录</div>
+  </div>
 
-    <div class="team-card" onclick="window.location='dashboard_UT4CY.html'">
-      <div class="rank">#4</div>
-      <div class="team-id">UT4CY</div>
-      <div class="team-amount">¥56,856.65</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
+  <div class="team-card" onclick="window.location='dashboard_D3X5H.html'">
+    <div class="team-id">D3X5H</div>
+    <div class="team-amount">¥16,335.54</div>
+    <div class="team-label">4月总订单金额</div>
+    <div class="team-rows">787 条数据记录</div>
+  </div>
 
-    <div class="team-card" onclick="window.location='dashboard_4YYA8.html'">
-      <div class="rank">#5</div>
-      <div class="team-id">4YYA8</div>
-      <div class="team-amount">¥50,584.21</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
-
-    <div class="team-card" onclick="window.location='dashboard_RPX72.html'">
-      <div class="rank">#6</div>
-      <div class="team-id">RPX72</div>
-      <div class="team-amount">¥50,573.23</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
-
-    <div class="team-card" onclick="window.location='dashboard_NSV4A.html'">
-      <div class="rank">#7</div>
-      <div class="team-id">NSV4A</div>
-      <div class="team-amount">¥40,581.55</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
-
-    <div class="team-card" onclick="window.location='dashboard_QS4PQ.html'">
-      <div class="rank">#8</div>
-      <div class="team-id">QS4PQ</div>
-      <div class="team-amount">¥34,609.26</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
-
-    <div class="team-card" onclick="window.location='dashboard_PM3V6.html'">
-      <div class="rank">#9</div>
-      <div class="team-id">PM3V6</div>
-      <div class="team-amount">¥28,028.62</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
-
-    <div class="team-card" onclick="window.location='dashboard_FWV7R.html'">
-      <div class="rank">#10</div>
-      <div class="team-id">FWV7R</div>
-      <div class="team-amount">¥20,628.30</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
-
-    <div class="team-card" onclick="window.location='dashboard_VH4S3.html'">
-      <div class="rank">#11</div>
-      <div class="team-id">VH4S3</div>
-      <div class="team-amount">¥18,028.39</div>
-      <div class="team-label">4月总订单金额</div>
-    </div>
-
-    <div class="team-card" onclick="window.location='dashboard_D3X5H.html'">
-      <div class="rank">#12</div>
-      <div class="team-id">D3X5H</div>
-      <div class="team-amount">¥16,335.54</div>
-      <div class="team-label">4月总订单金额</div>
-    </div></div>
+</div>
 <div style="text-align:center;color:#475569;font-size:.8rem;margin-top:32px;padding:16px 0">
   数据来源：各团队4月份整体数据分析表 | 生成时间：2026年5月8日
 </div>
